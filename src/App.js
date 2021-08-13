@@ -1,40 +1,30 @@
-import { div } from 'prelude-ls';
-import  {useEffect, useState} from 'react';
-import Tmdb from './Tmdb';
-import MovieRow from './components/MovieRow';
+import { div } from "prelude-ls";
+import { useEffect, useState } from "react";
+import Tmdb from "./Tmdb";
+import MovieRow from "./components/MovieRow";
+import "./App.css";
 
-
-
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+  const [moveList, setMoveList] = useState([]);
 
-  const [moveList, setMoveList]=useState([]);
+  useEffect(() => {
+    const loadAll = async () => {
+      //pegando a lista
+      let list = await Tmdb.getHomeList();
+      setMoveList(list);
+      console.log(list);
+    };
+    loadAll();
+  }, []);
 
-useEffect(()=>{
-  const loadAll = async () => {
-    //pegando a lista
-    let list = await Tmdb.getHomeList();
-    setMoveList(list);
-    console.log(list);
-  }
-  loadAll();
-},[])
-
-  return(
+  return (
     <div className="page">
-      {/* Header
-      Destaque
-      Listas
-      Rodapé */}
       <section className="Lists">
-        {moveList.map((item,key)=>(
-          /*1 {item.title}
-            criar componente para exibir a lista */
-          <div> 
-            {/*2 passando duas props: tile e item --> setadas no TMDB files e acessadas pelo mapping no state "moveList"  da requisção na const "list" */}
-            <MovieRow key={key} title={item.title} items={item.itens}/>
-          </div>
+        {moveList.map((item, key) => (
+          <MovieRow key={key} title={item.title} items={item.items} />
         ))}
       </section>
     </div>
   );
-}
+};
