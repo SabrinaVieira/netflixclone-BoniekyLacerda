@@ -1,0 +1,85 @@
+.features {
+  height: 100vh;
+}
+.feature__vertical {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to top, #111 10%, transparente 90%);
+}
+
+.feature__horizontal {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(to rigth, #111 30%, transparent 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 30px;
+  padding: 150px;
+  padding-top: 70px;
+}
+
+.feature__name {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.feature__info {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.feature__points,
+.feature__year,
+.feature__seasons {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.feature__points {
+  color: #46d369;
+}
+
+.feature__description {
+  margin-top: 15px;
+  font-size: 20px;
+  color: #999;
+  max-width: 35%;
+}
+
+.feature__buttons {
+  margin-top: 15px;
+}
+.feature__watch_button,
+.feature__mylist_button {
+  display: inline-block;
+  font-size: 20px;
+  padding: 15px 0;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 10px;
+  opacity: 1;
+  transition: all ease 0.2;
+}
+
+.feature__watch_button:hover,
+.feature__mylist_button:hover {
+  opacity: 0.7;
+}
+
+.feature__watch_button {
+  background-color: #fff;
+  color: #000;
+}
+
+.feature__mylist_button {
+  background-color: #333;
+  color: #fff;
+}
+
+.feature__genres {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #999;
+}
