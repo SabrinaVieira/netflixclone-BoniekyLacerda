@@ -12,9 +12,6 @@ function App() {
   const [movieList, setMovieList] = useState([]);
   const [darkHeader, setDarkHeader] = useState(false);
 
-  console.log("Estado da Home List:");
-  console.log(movieList);
-
   //1.6 - usar a funçaõ getHomeList de Tmdb.js pra carregar tudo toda vez que a pag for atualizada
   useEffect(() => {
     const loadAll = async () => {
@@ -22,11 +19,12 @@ function App() {
       let list = await Tmdb.getHomeList();
       //1.8
       setMovieList(list);
+
       //3.2 Pegando o FeatureData atraves da função filter que só pega o item desse array no qual o slug = originals
       let originals = list.filter((i) => i.slug === "originals");
       //3.3 escolhe um numero (index/posição) aleatoria da lista de originals //Não entendi o " originals[0]"//INFERNO
       let ramdomChosen = Math.floor(
-        Math.random() * (originals[0].itemfilmes.results.length - 1)
+        Math.random() * (originals[0].itemsfilmes.results.length - 1)
       );
       //3.4 montando os parametros (caminho dentro do obj) para pegar os dados so filme
       let chosen = originals[0].itemsfilmes.results[ramdomChosen];
@@ -58,6 +56,15 @@ function App() {
           ))
         }
       </section>
+
+      {movieList.length <= 0 && (
+        <div className="loading">
+          <img
+            src="https://cdn.lowgif.com/small/0534e2a412eeb281-the-counterintuitive-tech-behind-netflix-s-worldwide.gif"
+            alt="loading"
+          ></img>
+        </div>
+      )}
     </div>
   );
 }

@@ -5,7 +5,7 @@ export default function FeatureMovie({ item }) {
   let firstDate = new Date(item.first_air_date);
   //4.3 - tratando o objeto de generos, colocando cada item dentro de um array
   let genres = [];
-  for (let i in item.genres[i].name) {
+  for (let i in item.genres) {
     genres.push(item.genres[i].name);
   }
 
