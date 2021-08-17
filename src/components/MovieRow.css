@@ -19,7 +19,7 @@
   width: 150px;
 }
 
-.movieRow__list img {
+.movieRow__item img {
   width: 150px;
   transform: scale(0.9);
   transition: all ease 0.2s;

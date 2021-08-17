@@ -1,12 +1,20 @@
 import React from "react";
+import "./FeatureMovie.css";
 
 export default function FeatureMovie({ item }) {
+  console.log("item");
+  console.log(item);
   //4.1 - cria se uma nova data - JavaScript Date instance that represents a single moment in time Date objects contain a Number that represents milliseconds since 1 January 1970 UTC.
   let firstDate = new Date(item.first_air_date);
   //4.3 - tratando o objeto de generos, colocando cada item dentro de um array
   let genres = [];
   for (let i in item.genres) {
     genres.push(item.genres[i].name);
+  }
+
+  let descr = item.overview;
+  if (descr.length > 200) {
+    descr = descr.substring(0, 200) + "...";
   }
 
   return (
@@ -32,7 +40,7 @@ export default function FeatureMovie({ item }) {
               {item.number_of_seasons} temporada
               {item.number_of_seasons !== 1 ? "s" : ""}
             </div>
-            <div className="feature__description">{item.overview}</div>
+            <div className="feature__description">{descr}</div>
             <div className="feature__buttons">
               <a className="feature__watch_button" href={`/watch/${item.id}`}>
                 Assistir

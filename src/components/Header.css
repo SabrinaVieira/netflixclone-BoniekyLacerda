@@ -1,17 +1,19 @@
-.header {
+header {
+  width: 100%;
   position: fixed;
   z-index: 999;
-  top: 0;
-  right: 0;
+  top: 0px;
+  right: 0px;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
   background: transparent;
+  transition: all ease 0.5s;
 }
 
-.header.dark {
+header.dark {
   background: #141414;
 }
 

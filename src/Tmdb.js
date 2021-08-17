@@ -32,17 +32,17 @@ export default {
       {
         slug: "originals",
         title: "Originais",
-        itemsfilmes: await basicFetch(`discover/tv?with_network=213`),
+        itemsfilmes: await basicFetch(`discover/tv?with_network=213&`),
       },
       {
         slug: "treading",
         title: "Recomendados para Você",
-        itemsfilmes: await basicFetch(`treding/all/week?`),
+        itemsfilmes: await basicFetch(`treding/all/week?&`),
       },
       {
         slug: "toprated",
         title: "Em Alta",
-        itemsfilmes: await basicFetch(`movie/top_rated?`),
+        itemsfilmes: await basicFetch(`movie/top_rated?&`),
       },
     ];
   },
@@ -50,21 +50,20 @@ export default {
   // é necessario enviar o "id" e o "tipo" (filme ou documentario) que será enviado do APP.js pra cá
   getMovieInfo: async (movieId, type) => {
     //3.6 criando switch case para trocar a o tipo de requição das informações a serem exibidas de acordo com o tipo fil/documentario//serie
-    let info = {
-      if(moveId) {
-        switch (type) {
-          case "movie":
-            info = basicFetch(`movie/${movieId}?`);
-            break;
-          case "tv":
-            info = basicFetch(`tv/${moveId}?`);
-            break;
-          default:
-            info = null;
-            break;
-        }
-      },
-    };
+    let info = {};
+    if (movieId) {
+      switch (type) {
+        case "movie":
+          info = basicFetch(`movie/${movieId}?`);
+          break;
+        case "tv":
+          info = basicFetch(`tv/${movieId}?`);
+          break;
+        default:
+          info = null;
+          break;
+      }
+    }
 
     return info;
   },

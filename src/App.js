@@ -22,6 +22,7 @@ function App() {
 
       //3.2 Pegando o FeatureData atraves da função filter que só pega o item desse array no qual o slug = originals
       let originals = list.filter((i) => i.slug === "originals");
+
       //3.3 escolhe um numero (index/posição) aleatoria da lista de originals //Não entendi o " originals[0]"//INFERNO
       let ramdomChosen = Math.floor(
         Math.random() * (originals[0].itemsfilmes.results.length - 1)
@@ -30,15 +31,32 @@ function App() {
       let chosen = originals[0].itemsfilmes.results[ramdomChosen];
       //3.6 Requisitando os dados e jogando dentro da variavel chosenInfo
       let chosenInfo = await Tmdb.getMovieInfo(chosen.id, "tv");
+
       //3.7 - passar as informações para o state - atualiza a cada refresh da pag
       setFeatureData(chosenInfo);
     };
     loadAll();
   }, []);
 
+  useEffect(() => {
+    const scrollListener = () => {
+      if (window.scrollY > 10) {
+        setDarkHeader(true);
+      } else {
+        setDarkHeader(false);
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+
+    return () => {
+      window.removeEventListener("scroll", scrollListener);
+    };
+  }, []);
+
   return (
     <div className="page">
-      <Header dark={darkHeader} />
+      <Header dark={darkHeader}> </Header>
       {
         //3.1 - irá exibir o componet MovieFeatyre somente quando o state "featureData" estiver preenchido
         featureData && <FeatureMovie item={featureData} />
@@ -47,16 +65,16 @@ function App() {
       <section className="list">
         {
           //1.9 - Mapear o array de objetos recebidos no state movielist
-          movieList.map((item, key) => (
-            <MovieRow
-              key="key"
-              title={item.title}
-              item={item.itemsfilmes} //imprime as chaves
-            />
-          ))
+          movieList !== undefined &&
+            movieList.map((item, key) => (
+              <MovieRow
+                key={key}
+                title={item.title}
+                item={item.itemsfilmes} //imprime as chaves
+              />
+            ))
         }
       </section>
-
       {movieList.length <= 0 && (
         <div className="loading">
           <img
