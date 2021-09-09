@@ -1,9 +1,8 @@
-//1 - Este arquivo vontem todas as requisições à API de Filmes
-//1.1 - importar API Key
+// import API_KEY from "../.env.local";
+// import API_BASE from "../.env.local";
 const API_KEY = "a0dd6ec96df74687fe3eca86f4a688db";
-//1.2 - URL que precede todos os endpoints de consulta
-const API_BASE = "https://api.themoviedb.org/3/";
 
+const API_BASE = "https://api.themoviedb.org/3/";
 /*
 - originais da netflix
 - recomendados (treading)

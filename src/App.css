@@ -27,3 +27,8 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+footer {
+  margin: 50px;
+  text-align: center;
+}

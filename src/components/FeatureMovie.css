@@ -5,7 +5,7 @@
 .feature__vertical {
   width: inherit;
   height: inherit;
-  background: linear-gradient(to top, #111 10%, transparente);
+  background: linear-gradient(to top, #111 10%, transparent);
 }
 
 .feature__horizontal {

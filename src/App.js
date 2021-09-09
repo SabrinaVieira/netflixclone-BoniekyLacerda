@@ -59,12 +59,12 @@ function App() {
       <Header dark={darkHeader}> </Header>
       {
         //3.1 - irá exibir o componet MovieFeatyre somente quando o state "featureData" estiver preenchido
-        featureData && <FeatureMovie item={featureData} />
+        featureData && <FeatureMovie itemn={featureData} />
       }
 
-      <section className="list">
+      <section className="lists">
         {
-          //1.9 - Mapear o array de objetos recebidos no state movielist
+          //1.9 - Mapear o array de objetos recebidos no state movielist //solução - colocar if para veficar o primeiro carregamento que vem vazio
           movieList !== undefined &&
             movieList.map((item, key) => (
               <MovieRow
@@ -83,6 +83,18 @@ function App() {
           ></img>
         </div>
       )}
+      <footer>
+        Feito com
+        <span role="img" aria-label="coração">
+          {" "}
+          core{" "}
+        </span>{" "}
+        pela B7Web
+        <br />
+        Direitos de imagem para a Netflix
+        <br />
+        Dados coletados para realixzação do projeto: Themoviedb.org
+      </footer>
     </div>
   );
 }
